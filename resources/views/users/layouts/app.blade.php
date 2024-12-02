@@ -20,8 +20,7 @@
                 <header class="bg-white dark:bg-gray-800 shadow">
                         @include('users.layouts.header')
                 </header>
-            <main>
-            </main>
+            @yield('content')
         </div>
     <div class="footer">
         @include('users.layouts.footer')
