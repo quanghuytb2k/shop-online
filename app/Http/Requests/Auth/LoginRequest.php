@@ -37,11 +37,16 @@ class LoginRequest extends FormRequest
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function authenticate(): void
+    public function authenticate($guard = 'web'): void
     {
         $this->ensureIsNotRateLimited();
 
-        if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
+        $data = [
+            'email' => $this->get('email'),
+            'password' => $this->get('password'),
+        ];
+
+        if (! Auth::guard($guard)->attempt($data, $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
