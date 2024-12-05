@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthenticatedSessionController as AdminAuthenticatedSessionController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
+use App\Http\Controllers\Admin\AdminProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,8 @@ Route::middleware('auth')->group(function () {
 
 Route::prefix("admin")->name("admin.")->group(function () {
     Route::get('dashboard', [AdminHomeController::class, 'index']);
+
+    Route::get('product/add', [AdminProductController::class, 'add'])->name('product.add');
 
 
     Route::get('login', [AdminAuthenticatedSessionController::class, 'create'])

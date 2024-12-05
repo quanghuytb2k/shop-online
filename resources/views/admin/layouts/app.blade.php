@@ -11,6 +11,8 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet"/>
     <link href="{{asset('css/font-awesome/css/font-awesome.css')}}" rel="stylesheet"/>
+    <link href="{{url('/css/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css"/>
+    <script src="{{url('/js/jquery-3.5.0.min.js')}}" type="text/javascript"></script>
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -53,5 +55,9 @@
 <div class="footer">
     @include('admin.layouts.footer')
 </div>
+
+<script src="{{ asset('/js/jquery-3.5.0.min.js') }}"></script>
+<script src="{{ asset('/js/app.js') }}"></script>
+<script src="{{ asset('/js/main.js') }}"></script>
 </body>
 </html>
