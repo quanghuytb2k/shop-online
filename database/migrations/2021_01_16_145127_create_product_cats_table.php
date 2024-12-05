@@ -16,6 +16,7 @@ class CreateProductCatsTable extends Migration
         Schema::create('product_cats', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->integer('parent_id')->nullable();
             $table->string('description')->nullable();
             $table->timestamps();
         });

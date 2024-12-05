@@ -57,8 +57,8 @@
 //             });
 //             return filter;
 //         }
-//         var price = get_filter('filter-price'); 
-//         var brand = get_filter('filter-brand'); 
+//         var price = get_filter('filter-price');
+//         var brand = get_filter('filter-brand');
 //         var cat_id = $('h3#cat-title').attr('cat-id');
 //         var arrange = $("#filter-arrange").find(":selected").val();
 //         var data = {page_num: page_num, cat_id: cat_id, price: price, brand: brand, arrange: arrange };
@@ -187,3 +187,19 @@
 //         });
 //     });
 // });
+
+// $(document).ready(function() {
+//     show_upload_image = function () {
+//         console.log(3333);
+//         var upload_image = document.getElementById("upload-thumb")
+//         if (upload_image.files && upload_image.files[0]) {
+//             let reader = new FileReader();
+//             reader.onload = function (e) {
+//                 $('#upload-image').attr('src', e.target.result)
+//             };
+//             reader.readAsDataURL(upload_image.files[0]);
+//             // let url = URL.createObjectURL(input.files[0]);
+//             // upload-image.setAttribute('src', url);
+//         }
+//     }
+// })
