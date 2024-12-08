@@ -31,19 +31,20 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
 Route::prefix("admin")->name("admin.")->group(function () {
-    Route::get('dashboard', [AdminHomeController::class, 'index']);
-
-    Route::get('product/add', [AdminProductController::class, 'add'])->name('product.add');
-
-
-    Route::get('login', [AdminAuthenticatedSessionController::class, 'create'])
-        ->name('login');
-
+    Route::get('login', [AdminAuthenticatedSessionController::class, 'create'])->name('login');
     Route::post('login', [AdminAuthenticatedSessionController::class, 'store']);
+    Route::middleware('authAdmin:admin')->name("admin.")->group(function () {
+        Route::get('dashboard', [AdminHomeController::class, 'index']);
 
-    Route::middleware(['authAdmin:admin'])->group(function () {
-        Route::post('logout', [AdminAuthenticatedSessionController::class, 'destroy'])->name('logout');
+        Route::get('product/list', 'AdminProductController@list')->name('product.list');
+        Route::get('product/add', [AdminProductController::class, 'add'])->name('product.add');
+        Route::post('product/store', [AdminProductController::class, 'store'])->name('product.store');
+
+        Route::middleware(['authAdmin:admin'])->group(function () {
+            Route::post('logout', [AdminAuthenticatedSessionController::class, 'destroy'])->name('logout');
+        });
     });
 });
 

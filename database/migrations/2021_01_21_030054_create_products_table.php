@@ -17,10 +17,15 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('name');
             $table->unsignedBigInteger('price');
+            $table->unsignedBigInteger('old_price')->nullable();
+            $table->string('image')->nullable();
             $table->text('desc')->nullable();
             $table->text('content')->nullable();
-            $table->enum('Trạng thái', ['Chờ duyệt', 'Công khai']);
-            $table->unsignedBigInteger('cat_id');
+            $table->tinyInteger('status')->comment('2 Chờ duyệt, 1 Công khai')->default('1');
+            $table->integer('cat_id');
+            $table->integer('warehouse')->nullable();
+            $table->integer('sold')->nullable();
+            $table->string("creator")->nullable();
             $table->timestamps();
         });
     }
