@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthenticatedSessionController as AdminAuthenticatedSessionController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Admin\AdminProductController;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,8 +21,7 @@ use App\Http\Controllers\ProductController;
 Route::get('/', function () {
     return view('users.home');
 });
-
-Route::get('/product/detail', [ProductController::class, 'show'])->name('product.detail');
+Route::get('/cart', [CartController::class, 'index'])->name('card');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
