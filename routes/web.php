@@ -23,7 +23,7 @@ Route::get('/', function () {
     return view('users.home');
 });
 
-Route::get('/cart', [CartController::class, 'index'])->name('card');
+Route::get('/cart/index', [CartController::class, 'index'])->name('cart.index');
 Route::get('/product/detail', [ProductController::class, 'show'])->name('product.detail');
 
 Route::get('/dashboard', function () {
