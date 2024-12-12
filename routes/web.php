@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AuthenticatedSessionController as AdminAuthentica
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +22,9 @@ use App\Http\Controllers\CartController;
 Route::get('/', function () {
     return view('users.home');
 });
+
 Route::get('/cart', [CartController::class, 'index'])->name('card');
+Route::get('/product/detail', [ProductController::class, 'show'])->name('product.detail');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
